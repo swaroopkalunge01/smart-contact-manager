@@ -26,8 +26,19 @@ public class Contact implements Serializable{
 	private String email;
 	private String phone;
 	private String image;
+	
+	public boolean isFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(boolean favorite) {
+		this.favorite = favorite;
+	}
 	@Column(length=50000)
 	private String description;
+	
+	@Column(name = "favorite")
+	private boolean favorite = false;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -137,8 +148,8 @@ public class Contact implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Contact [cId=" + cId + ", name=" + name + ", secondName=" + secondName + ", work=" + work + ", email="
-				+ email + ", phone=" + phone + ", image=" + image + ", description=" + description + ", user=" + user
-				+ "]";
+	    return "Contact [cId=" + cId +
+	            ", name=" + name +
+	            ", email=" + email + "]";
 	}
 }
